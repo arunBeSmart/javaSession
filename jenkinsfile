@@ -1,0 +1,46 @@
+ pipeline {
+    agent any 
+    stages {
+        stage('GitHub') {
+		steps {
+                // Get some code from a GitHub repository
+                git branch: 'main', url: 'https://github.com/arunBeSmart/jjavaSession'
+ 
+            }
+
+          
+        }
+		
+        stage('Build') {
+            steps {
+                 sh 'javac hlll.java'
+            }
+
+          
+        }	
+        stage('Test') {
+            steps {
+                 sh 'java  hlll'
+            }
+
+          
+        }
+		stage('Run') {
+            steps {
+                 sh 'java  hlll'
+            }
+
+          
+        }
+		stage('Email notifications') {
+            steps {
+                 emailext body: 'test details', subject: 'test ready', to: 'arunbesmart@gmail.com'
+            }
+
+          
+        }
+		
+		
+    }
+}
+ 
